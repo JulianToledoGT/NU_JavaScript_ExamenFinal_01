@@ -1,4 +1,4 @@
-/*Julian Toledo 20200209*/
+/*Julian Toledo 20200210*/
 /*
 //Efecto de presionar teclas
 //Dimensiones de la tecla "mas": x 79; y 149.56; (Aunque éstas dimensiones no se usan pues sus dimensiones se establecen por porcentajes respecto a su contenedor).
@@ -58,7 +58,7 @@ function operar(signo) {
     } else if (signo=="sign"){
         mi_pantalla.innerText *= -1;
     } else if (signo=="raiz"){
-        mi_pantalla.innerText = Math.sqrt(parseFloat(mi_pantalla.innerText));
+        mi_pantalla.innerText = resultado8(Math.sqrt(parseFloat(mi_pantalla.innerText)));
     } else if (signo=="on"){
         en_curso = false;
         resultado = 0;
@@ -84,7 +84,7 @@ function operar(signo) {
                 resultado /= valor;
                 break;
         }
-        mi_pantalla.innerText = resultado;
+        mi_pantalla.innerText = resultado8(resultado);
     } else {
         itr = 0;
         operador = signo;
@@ -95,4 +95,12 @@ function operar(signo) {
         }
         mi_pantalla.innerText = 0;
     }
+}
+
+function resultado8 (mi_resultado){
+    var lng = 8;
+    var str_resultado = String(mi_resultado);
+    if (str_resultado.indexOf('.') != -1){lng += 1};
+    if (str_resultado.indexOf('-') != -1){lng += 1};
+    return str_resultado.substr(0,lng)
 }
